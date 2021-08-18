@@ -1,5 +1,3 @@
-<?php include "include/register.php" ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,29 +12,64 @@
 </head>
 
 <body class="bg-dark">
-
-    <form class="container text-light border rounded-3 p-3 mt-5 col-3" action="include/register.php" method="POST">
+    <div class="container mt-3">
+        <?php
+            if(isset($_GET['error']))
+                if($_GET['error'] == "emptyinput") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            Please fill in all fields!
+                        </div>';
+                }else if($_GET['error'] == "invaliduname") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            Invalid username detected, please try again.
+                        </div>';
+                }else if($_GET['error'] == "invalidemail") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            You have entered an invalid email, try again.
+                        </div>';
+                }else if($_GET['error'] == "notmatch") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            Passwords do not match! Please try again.
+                        </div>';
+                }else if($_GET['error'] == "usernametaken") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            The username "<b>'.$_GET['uname'].'</b>" is taken, please choose another username.
+                        </div>';
+                }else if($_GET['error'] == "stmtfailed") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            Something went wrong, try again!
+                        </div>';
+                }else if($_GET['error'] == "none") {
+                    echo '<div class="alert alert-success" role="alert">
+                            Account created successfully! Log in to continue.
+                        </div>';
+                }
+        ?>
+    </div>
+    <form class="container text-light border rounded-3 p-3 mt-5 col-3" action="include/register.inc.php" method="POST">
         <h1 class="text-center py-3">create an account</h1>
         <div class="mb-3">
             <label for="txtuname" class="form-label">Userame</label>
-            <input type="text" class="form-control" id="txtuname" name="username" placeholder="bleuberrrry">
+            <input type="text" class="form-control" id="txtuname" name="userName" placeholder="Username...">
         </div>
         <div class="mb-3">
             <label for="txtfname" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="txtfname" name="fname" placeholder="John">
+            <input type="text" class="form-control" id="txtfname" name="firstName" placeholder="First name...">
         </div>
         <div class="mb-3">
             <label for="txtlname" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="txtlname" name="lname" placeholder="Doe">
+            <input type="text" class="form-control" id="txtlname" name="lastName" placeholder="Last name...">
         </div>
         <div class="mb-3">
             <label for="txtEmail" class="form-label">Email address</label>
-            <input type="email" class="form-control" placeholder="joe@example.com" id="txtEmail" name="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" placeholder="Email..." id="txtEmail" name="userEmail"
+                aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="txtPassword" class="form-label">Password</label>
             <div class="input-group">
-                <input type="password" class="form-control" placeholder="Enter your Password" id="txtPassword" name="password">
+                <input type="password" class="form-control" placeholder="Password..." id="txtPassword"
+                    name="userPassword">
                 <span class="input-group-text rounded-end p-0" id="hide"><button type="button"
                         class="input-group-text btn btn-link text-decoration-none text-dark" id="hidePassword"><i
                             class="fas fa-eye-slash"></i></button></span>
@@ -47,10 +80,11 @@
         </div>
         <div class="mb-4">
             <label for="txtConfirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" placeholder="Re-enter Password" id="txtConfirmPassword">
+            <input type="password" class="form-control" placeholder="Confirm password..." id="txtConfirmPassword"
+                name="userConfirmPassword">
         </div>
         <div class="d-grid gap-2 mx-auto">
-            <button type="submit" class="btn btn-secondary">Sign Up</button>
+            <button type="submit" class="btn btn-secondary" name="submit">Sign Up</button>
         </div>
     </form>
 
@@ -76,7 +110,6 @@
             });
 
         });
-
     </script>
 </body>
 

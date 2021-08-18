@@ -13,17 +13,31 @@
 </head>
 
 <body class="bg-dark">
-
-    <form class="container border rounded rounded-3 p-3 mt-5 col-3 text-light" action="" method="POST">
+<div class="container mt-3">
+        <?php
+            if(isset($_GET['error'])){
+                if($_GET['error'] == "emptyinput") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            Please fill in all fields!
+                        </div>';
+                }else if($_GET['error'] == "wronglogin") {
+                    echo '<div class="alert alert-danger" role="alert">
+                            Incorrect Username or Password.
+                        </div>';
+                }
+            }
+        ?>
+    </div>
+    <form class="container border rounded rounded-3 p-3 mt-5 col-3 text-light" action="include/login.inc.php" method="POST">
         <h1 class="text-center py-3">login</h1>
         <div class="mb-3">
-            <label for="txtUsername" class="form-label">Username</label>
-            <input type="text" class="form-control" placeholder="Username" id="txtUsername">
+            <label for="txtUsername" class="form-label">Username/Email</label>
+            <input type="text" class="form-control" placeholder="Username/Email..." id="txtUsername" name="userName">
         </div>
         <div class="mb-3">
             <label for="txtPassword" class="form-label">Password</label>
             <div class="input-group">
-                <input type="password" class="form-control" placeholder="Password" id="txtPassword">
+                <input type="password" class="form-control" placeholder="Password..." id="txtPassword" name="userPassword">
                 <span class="input-group-text p-0 rounded-end" id="hide"><button type="button"
                         class="input-group-text btn btn-link text-decoration-none text-dark" id="hidePassword"><i
                             class="fas fa-eye-slash"></i></button></span>
@@ -37,7 +51,7 @@
             <input type="text" class="form-control" placeholder="Enter 2FA" id="txt2fa">
         </div>
         <div class="d-grid gap-2 mx-auto">
-            <button type="submit" class="btn btn-secondary">Login</button>
+            <button type="submit" class="btn btn-secondary" name="submit">Login</button>
         </div>
     </form>
 
