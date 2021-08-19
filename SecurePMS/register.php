@@ -11,7 +11,7 @@
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
 
-<body class="bg-dark">
+<body>
     <div class="container mt-3">
         <?php
             if(isset($_GET['error']))
@@ -46,7 +46,7 @@
                 }
         ?>
     </div>
-    <form class="container text-light border rounded-3 p-3 mt-5 col-3" action="include/register.inc.php" method="POST">
+    <form class="container border rounded-3 p-3 mt-5 col-3" action="include/register.inc.php" method="POST">
         <h1 class="text-center py-3">create an account</h1>
         <div class="mb-3">
             <label for="txtuname" class="form-label">Userame</label>
@@ -85,6 +85,7 @@
         </div>
         <div class="d-grid gap-2 mx-auto">
             <button type="submit" class="btn btn-secondary" name="submit">Sign Up</button>
+            <a class="text-center" href="login.php">Already have an account? Log in.</a>
         </div>
     </form>
 

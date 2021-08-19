@@ -12,7 +12,7 @@
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
 
-<body class="bg-dark">
+<body>
 <div class="container mt-3">
         <?php
             if(isset($_GET['error'])){
@@ -24,11 +24,15 @@
                     echo '<div class="alert alert-danger" role="alert">
                             Incorrect Username or Password.
                         </div>';
+                }else if($_GET['error'] == "logout") {
+                    echo '<div class="alert alert-success" role="alert">
+                            Logout Successfully!
+                        </div>';
                 }
             }
         ?>
     </div>
-    <form class="container border rounded rounded-3 p-3 mt-5 col-3 text-light" action="include/login.inc.php" method="POST">
+    <form class="container border rounded rounded-3 p-3 mt-5 col-3" action="include/login.inc.php" method="POST">
         <h1 class="text-center py-3">login</h1>
         <div class="mb-3">
             <label for="txtUsername" class="form-label">Username/Email</label>
@@ -52,6 +56,7 @@
         </div>
         <div class="d-grid gap-2 mx-auto">
             <button type="submit" class="btn btn-secondary" name="submit">Login</button>
+            <a class="text-center" href="register.php">Don't have an account? Sign Up</a>
         </div>
     </form>
 

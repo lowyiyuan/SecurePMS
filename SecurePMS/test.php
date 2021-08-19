@@ -5,7 +5,7 @@ require_once 'include/conn.inc.php';
 $sql = "SELECT user_ID, user_Name, user_Fname, user_Lname, user_Password, user_Email FROM users WHERE user_Email = ?";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $_GET['q']);
+$stmt->bind_param("s", $_GET['user']);
 $stmt->execute();
 $stmt->store_result();
 $stmt->bind_result($uid, $uname, $ufname, $ulname, $upassword, $uemail);

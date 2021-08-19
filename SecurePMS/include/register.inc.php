@@ -8,7 +8,8 @@ if(isset($_POST["submit"])) {
     $userEmail = $_POST["userEmail"];
     $userPassword = $_POST["userPassword"];
     $userConfirmPassword = $_POST["userConfirmPassword"];
-
+    // Generate a new salt
+    $salt = hash("sha256", rand(-69420, 69420), false);
 
     require_once "conn.inc.php";
     require_once "functions.inc.php";
@@ -34,7 +35,7 @@ if(isset($_POST["submit"])) {
         exit();
     }
     
-    createUser($conn, $userName, $firstName, $lastName, $userEmail, $userPassword);
+    createUser($conn, $userName, $firstName, $lastName, $userEmail, $userPassword, $salt);
 
 }else {
     header("location: ../register.php");
