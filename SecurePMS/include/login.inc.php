@@ -9,11 +9,11 @@ if(isset($_POST["submit"])) {
     require_once "functions.inc.php";
 
     if(emptyInputLogin($userName, $userPassword) !== false) {
-        header("location: ../login.php?error=emptyinput");
+        header("location: ../login?error=emptyinput");
         exit();
     }
     loginUser($conn, $userName, $userPassword);
 }else {
-    header("location: ../login.php");
+    header("location: ../login");
     exit();
 }

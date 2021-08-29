@@ -1,6 +1,5 @@
 <?php
 
-
 // Detect if Sign Up form has empty input
 function emptyInputSignup($userName, $firstName, $lastName, $userEmail, $userPassword, $userConfirmPassword) {
     $result;
@@ -56,7 +55,7 @@ function userNameExists($conn, $userName, $userEmail) {
     $stmt = mysqli_stmt_init($conn);
     // Returns user to the sign up page if user exists
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../register.php?error=stmtfailed");
+        header("location: ../register?error=stmtfailed");
         exit();
     }
     // Continues to get the row from database if user does not exist
@@ -81,7 +80,7 @@ function createUser($conn, $userName, $firstName, $lastName, $userEmail, $userPa
     $stmt = mysqli_stmt_init($conn);
     // Returns the user to the sign up page if the SQL statement does not execute correctly
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../register.php?error=stmtfailed");
+        header("location: ../register?error=stmtfailed");
         exit();
     }
     // Hash the password using HMAC algorithm as well as sha256 hash function
@@ -90,8 +89,25 @@ function createUser($conn, $userName, $firstName, $lastName, $userEmail, $userPa
     mysqli_stmt_bind_param($stmt, "ssssss", $userName, $firstName, $lastName, $userEmail, $hmacPwd, $salt);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
+    
+    $filename = strval(hash_hmac("sha256", $userName, $hmacPwd, false));
+    $filePath = "../userData/" . $filename . ".json";
+    $createNewFile = array(
+        "loginDetails" => [],
+        "licenseKey" => [],
+        "paymentCard" => [],
+        "identityCard" => [],
+        "secureNotes" => [],
+    );
+
+    fopen($filePath, "w");
+    if(is_writeable($filePath)){
+        file_put_contents($filePath, json_encode($createNewFile));
+    }
+
     // Returns user to sign up page with no errors if successful
-    header("location: ../register.php?error=none");
+    header("location: ../register?error=none");
+
     exit();
 }
 
@@ -113,7 +129,7 @@ function loginUser($conn, $userName, $userPassword){
     // Check if username exists and returns user to the login page if it does not exist
     $uidExists = userNameExists($conn, $userName, $userName);
     if($uidExists === false) {
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../login?error=wronglogin");
         exit();
     }
     // Retrieve hashed password and salt from database
@@ -122,8 +138,8 @@ function loginUser($conn, $userName, $userPassword){
     // Perform HMAC hashing on the received input
     $checkPwd = hash_hmac("sha256", $userPassword, $salt, false);
     // Compare both stored password and newly entered password, returns user to login page if password does not match
-    if(!$checkPwd === $pwdHashed) {
-        header("location: ../login.php?error=wronglogin");
+    if($checkPwd != $pwdHashed) {
+        header("location: ../login?error=wronglogin");
         exit();
     }else {
         // Start a new session and set session variables if login is successful
@@ -132,7 +148,9 @@ function loginUser($conn, $userName, $userPassword){
         $_SESSION["username"] = $uidExists["user_Name"]; 
         $_SESSION["useremail"] = $uidExists["user_Email"]; 
         $_SESSION["userpassword"] = $uidExists["user_Password"];
-        header("location: ../index.php");
+        $_SESSION["hash"] = $checkPwd;
+        header("location: ../index");
         exit();
     }
 }
+

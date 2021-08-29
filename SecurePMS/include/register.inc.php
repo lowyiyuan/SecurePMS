@@ -15,29 +15,29 @@ if(isset($_POST["submit"])) {
     require_once "functions.inc.php";
 
     if(emptyInputSignup($userName, $firstName, $lastName, $userEmail, $userPassword, $userConfirmPassword) !== false) {
-        header("location: ../register.php?error=emptyinput");
+        header("location: ../register?error=emptyinput");
         exit();
     }
     if(invalidUsername($userName) !== false) {
-        header("location: ../register.php?error=invaliduname");
+        header("location: ../register?error=invaliduname");
         exit();
     }
     if(invalidEmail($userEmail) !== false) {
-        header("location: ../register.php?error=invalidemail");
+        header("location: ../register?error=invalidemail");
         exit();
     }
     if(pdwMatch($userPassword, $userConfirmPassword) !== false) {
-        header("location: ../register.php?error=notmatch");
+        header("location: ../register?error=notmatch");
         exit();
     }
     if(userNameExists($conn, $userName, $userEmail) !== false) {
-        header("location: ../register.php?error=usernametaken&uname=$userName");
+        header("location: ../register?error=usernametaken&uname=$userName");
         exit();
     }
     
     createUser($conn, $userName, $firstName, $lastName, $userEmail, $userPassword, $salt);
 
 }else {
-    header("location: ../register.php");
+    header("location: ../register");
     exit();
 }

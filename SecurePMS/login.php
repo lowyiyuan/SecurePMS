@@ -10,10 +10,16 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
-<div class="container mt-3">
+    <div class="container mt-3">
         <?php
             if(isset($_GET['error'])){
                 if($_GET['error'] == "emptyinput") {
@@ -28,11 +34,15 @@
                     echo '<div class="alert alert-success" role="alert">
                             Logout Successfully!
                         </div>';
+                }else if($_GET['error'] == "nosession") {
+                    echo '<div class="alert alert-success" role="alert">
+                             Please login before continuing.
+                        </div>';
                 }
             }
         ?>
     </div>
-    <form class="container border rounded rounded-3 p-3 mt-5 col-3" action="include/login.inc.php" method="POST">
+    <form class="container border rounded rounded-3 p-3 mt-5 col-3" action="include/login.inc" method="POST">
         <h1 class="text-center py-3">login</h1>
         <div class="mb-3">
             <label for="txtUsername" class="form-label">Username/Email</label>
@@ -41,7 +51,8 @@
         <div class="mb-3">
             <label for="txtPassword" class="form-label">Password</label>
             <div class="input-group">
-                <input type="password" class="form-control" placeholder="Password..." id="txtPassword" name="userPassword">
+                <input type="password" class="form-control" placeholder="Password..." id="txtPassword"
+                    name="userPassword">
                 <span class="input-group-text p-0 rounded-end" id="hide"><button type="button"
                         class="input-group-text btn btn-link text-decoration-none text-dark" id="hidePassword"><i
                             class="fas fa-eye-slash"></i></button></span>
@@ -56,7 +67,7 @@
         </div>
         <div class="d-grid gap-2 mx-auto">
             <button type="submit" class="btn btn-secondary" name="submit">Login</button>
-            <a class="text-center" href="register.php">Don't have an account? Sign Up</a>
+            <a class="text-center" href="register">Don't have an account? Sign Up</a>
         </div>
     </form>
 

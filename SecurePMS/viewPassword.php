@@ -138,3 +138,18 @@
 </body>
 
 </html>
+
+
+function display_array($json_rec) {
+            if($json_rec) {
+                foreach ($json_rec as $key => $value) {
+                    if(is_array($value)){
+                        display_array($value);
+                    }else{
+                        echo $key . $value . '<br>';
+                    }
+                }
+            }
+        };
+
+        display_array($dataArray);

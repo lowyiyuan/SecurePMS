@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php require_once 'include/index.inc.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +26,28 @@
 <body style="margin: 0; overflow:hidden">
     <?php include 'include/navbar.inc.php'; ?>
     
-        
-    
+    <div class="d-flex flex-column justify-content-center" style="min-height: 60vh;">
+        <div class="container d-flex justify-content-center d-grid gap-5">
+            <div class="text-start">
+                <a href="generatePassword" class="btn btn-primary p-5 fs-4"><i class="fas fa-sync"></i> <br> Generate Password</a>
+            </div>
+            <div class="text-center">
+                <a href="viewPassword" class="btn btn-primary p-5 fs-4"><i class="fas fa-lock"></i> <br> My Vault</a>
+            </div>
+            <div class="text-end">
+                <a href="newLogin" class="btn btn-primary p-5 fs-4"><i class="fas fa-plus"></i> <br>Add New Login</a>
+            </div>
+        </div>
+        <div class="container mt-3 d-flex justify-content-center d-grid gap-5">
+            <div class="text-start">
+                <a href="" class="btn btn-primary p-5 fs-4"><i class="fas fa-user"></i> <br> My Profile</a>
+            </div>
+            <div class="text-end">
+                <a href="" class="btn btn-primary p-5 fs-4"><i class="fas fa-cogs"></i> <br> Settings</a>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

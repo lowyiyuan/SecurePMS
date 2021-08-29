@@ -2,7 +2,7 @@
 
 echo'<nav class="navbar navbar-expand-lg navbar-light py-3 bg-light">
         <div class="container">
-            <a class="navbar-brand" href="index.php">SecurePMS</a>
+            <a class="navbar-brand" href="index">SecurePMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -11,10 +11,10 @@ echo'<nav class="navbar navbar-expand-lg navbar-light py-3 bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Dashboard</a>
+                        <a class="nav-link active" aria-current="page" href="index">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewPassword.php">Passwords</a>
+                        <a class="nav-link" href="viewPassword">Passwords</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -26,7 +26,7 @@ echo'<nav class="navbar navbar-expand-lg navbar-light py-3 bg-light">
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="include/logout.inc.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="include/logout.inc">Logout</a></li>
                         </ul>
                     </li>
                 </ul>

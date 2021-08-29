@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -85,7 +91,7 @@
         </div>
         <div class="d-grid gap-2 mx-auto">
             <button type="submit" class="btn btn-secondary" name="submit">Sign Up</button>
-            <a class="text-center" href="login.php">Already have an account? Log in.</a>
+            <a class="text-center" href="login">Already have an account? Log in.</a>
         </div>
     </form>
 
