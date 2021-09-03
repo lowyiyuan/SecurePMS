@@ -68,7 +68,7 @@
                     <input type="text" class="form-control" id="website" name="website" placeholder="Enter a Website..."
                         autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-primary">Save Login</button>
+                <button type="submit" class="btn submitItem btn-primary">Save Login</button>
             </form>
         </section>
 
@@ -122,7 +122,7 @@
                     <a href="" class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top"
                         title="Show Password"><span><i class="fas fa-eye"></i></span></a>
                 </div>
-                <button type="submit" class="btn btn-primary">Save Payment Card</button>
+                <button type="submit" class="btn submitItem btn-primary">Save Payment Card</button>
             </form>
         </section>
 
@@ -203,7 +203,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="country" value="" autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-primary">Save ID Card</button>
+                <button type="submit" class="btn submitItem btn-primary">Save ID Card</button>
             </form>
         </section>
 
@@ -231,7 +231,7 @@
                     <input type="text" class="form-control" name="licenseKey" placeholder="Enter license key..."
                         value="" autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-primary">Save ID Card</button>
+                <button type="submit" class="btn submitItem btn-primary">Save ID Card</button>
             </form>
         </section>
 
@@ -252,7 +252,7 @@
                         <label for="message">Comments</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save Note</button>
+                <button type="submit" class="btn submitItem btn-primary">Save Note</button>
             </form>
         </section>
     </div>

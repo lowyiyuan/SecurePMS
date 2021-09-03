@@ -6,7 +6,6 @@ const licenseKey = document.getElementById("licenseKey");
 const secureNotes = document.getElementById("secureNotes");
 
 
-
 updateType = () => {
     switch (itemType.value) {
         case "loginDetails":
@@ -52,26 +51,27 @@ updateType = () => {
     }
 }
 
-$(document).ready(function() {
-    $("#loginDetailsForm").submit(function (event) {
+$(document).ready(function () {
+
+    $(".submitItem").click(function () {
+
         var itemTypeValue = itemType.value;
         var name = $("#siteName").val();
         var username = $("#userName").val();
         var password = $("#userPassword").val();
         var website = $("#website").val();
         event.preventDefault();
-    
-        var key = '<?php echo $_SESSION["userpassword"]; ?>';
+
+        var key = "<?php echo $_SESSION['userpassword']; ?>";
         var salt = '<?php echo $_SESSION["hash"]; ?>';
-    
-        var encryptedKey = XOREncrypt(key, salt)
-        var encryptedName = XOREncrypt(name, key);
-        var encryptedUserName = XOREncrypt(username, key);
-        var encryptedPassword = XOREncrypt(password, encryptedKey);
-        var encryptedWebsite = XOREncrypt(website, key);
-    
+
+        var encryptedKey = XOR(key, salt)
+        var encryptedName = XOR(name, key);
+        var encryptedUserName = XOR(username, key);
+        var encryptedPassword = XOR(password, encryptedKey);
+        var encryptedWebsite = XOR(website, key);
         $.ajax({
-            url: 'newLogin.inc.php',
+            url: 'include/newLogin.inc.php',
             method: 'POST',
             data: {
                 type: itemTypeValue,
@@ -79,10 +79,11 @@ $(document).ready(function() {
                 userName: encryptedUserName,
                 userPassword: encryptedPassword,
                 website: encryptedWebsite
-            },success: function(data){
+            },
+            success: function (data) {
                 console.log(data);
             }
         });
-    
+
     });
 });

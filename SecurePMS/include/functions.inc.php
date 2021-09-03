@@ -149,6 +149,7 @@ function loginUser($conn, $userName, $userPassword){
         $_SESSION["useremail"] = $uidExists["user_Email"]; 
         $_SESSION["userpassword"] = $uidExists["user_Password"];
         $_SESSION["hash"] = $checkPwd;
+        $_SESSION["filename"] = $uidExists["user_FileName"];
         header("location: ../index");
         exit();
     }

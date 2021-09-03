@@ -1,26 +1,12 @@
-function XOREncrypt(input, key) {
+function XOR(input, key) {
     var c = '';
-    while (key.length < input.length) {
-         key += key;
-    }
-    for(var i=0; i<input.length; i++) {
-        var x = input[i].charCodeAt(0);
-        var y = key[i].charCodeAt(0);
-
-        var XORxy = x ^ y;
-
-        var XORxyAsHex = XORxy.toString("16");
-
-        if (XORxyAsHex.length < 2) {
-            XORxyAsHex = btoa("0" + XORxyAsHex);
+    for (var x = 0; x < input.length; x++) {
+        if (x > key.length - 1) {
+            y = x % key.length;
+        } else {
+            y = x;
         }
-
-        c += XORxyAsHex;
+        c = c + String.fromCharCode(input.charCodeAt(x) ^ key.charCodeAt(y));
     }
-    return c;
-}
-
-function XORDecrypt(input, key) {
-    var key = '<?php echo $_SESSION["userpassword"]; ?>';
-    
+    return c
 }
