@@ -1,0 +1,12 @@
+{
+    "loginDetails": [{
+        "name": "T",
+        "username": "T",
+        "password": "a",
+        "website": "T"
+    }],
+    "licenseKey": [],
+    "paymentCard": [],
+    "identityCard": [],
+    "secureNotes": []
+}

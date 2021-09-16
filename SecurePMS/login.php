@@ -21,26 +21,33 @@
 <body>
     <div class="container mt-3">
         <?php
-            if(isset($_GET['error'])){
-                if($_GET['error'] == "emptyinput") {
-                    echo '<div class="alert alert-danger" role="alert">
+if (isset($_GET['error'])) {
+    if ($_GET['error'] == "emptyinput") {
+        echo '<div class="alert alert-danger" role="alert">
                             Please fill in all fields!
                         </div>';
-                }else if($_GET['error'] == "wronglogin") {
-                    echo '<div class="alert alert-danger" role="alert">
+    } else if ($_GET['error'] == "wronglogin") {
+        echo '<div class="alert alert-danger" role="alert">
                             Incorrect Username or Password.
                         </div>';
-                }else if($_GET['error'] == "logout") {
-                    echo '<div class="alert alert-success" role="alert">
+    } else if ($_GET['error'] == "logout") {
+        echo '<div class="alert alert-success" role="alert">
                             Logout Successfully!
                         </div>';
-                }else if($_GET['error'] == "nosession") {
-                    echo '<div class="alert alert-success" role="alert">
+    } else if ($_GET['error'] == "nosession") {
+        echo '<div class="alert alert-success" role="alert">
                              Please login before continuing.
                         </div>';
-                }
-            }
-        ?>
+    }
+} else if (isset($_GET['reset'])) {
+    if ($_GET['reset'] == "success") {
+        echo '<div class="alert alert-success" role="alert">
+                             Password Reset Successfully!
+                        </div>';
+    }
+}
+
+?>
     </div>
     <form class="container border rounded rounded-3 p-3 mt-5 col-3" action="include/login.inc" method="POST">
         <h1 class="text-center py-3">login</h1>
@@ -67,6 +74,7 @@
         </div>
         <div class="d-grid gap-2 mx-auto">
             <button type="submit" class="btn btn-secondary" name="submit">Login</button>
+            <a class="text-center" href="resetPassword">Forgot your password?</a>
             <a class="text-center" href="register">Don't have an account? Sign Up</a>
         </div>
     </form>

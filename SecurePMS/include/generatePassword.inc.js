@@ -7,10 +7,10 @@ const symbolsEl = document.getElementById("symbolsEl");
 const generateEl = document.getElementById("generateEl");
 const copyEl = document.getElementById("copyToClipboard");
 const output = document.getElementById("length");
-let flavourArray = [lowerCase, upperCase, numberEl, symbolsEl];
+var flavourArray = [lowerCase, upperCase, numberEl, symbolsEl];
 
 const updateSliderValue = () => {
-    
+
     if (output > 129) {
         passwordLength.value = 128;
         output.value = 128;
@@ -41,7 +41,6 @@ function newPassword() {
     const hasUpper = upperCase.checked;
     const hasNumber = numberEl.checked;
     const hasSymbol = symbolsEl.checked;
-
     resultEl.value = generateNewPassword(
         length,
         hasLower,
@@ -79,16 +78,6 @@ const generateNewPassword = (length, lower, upper, number, symbol) => {
     return finalPassword;
 }
 
-window.onload = newPassword(), updateSliderValue();
-generateEl.addEventListener('click', newPassword);
-flavourArray.forEach(function (flavour) {
-    flavour.addEventListener("click", newPassword)
-});
-let sliderArray = [updateSliderValue, newPassword];
-sliderArray.forEach(function (update) {
-    passwordLength.addEventListener("change", update)
-})
-
 const copyToClipboard = () => {
     resultEl.select();
     if (navigator.clipboard.writeText(resultEl.value)) {
@@ -98,9 +87,9 @@ const copyToClipboard = () => {
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`
     }
-    window.setTimeout(function() {
-        $("#success-alert").fadeTo(500, 0, function(){
-            $("#success-alert").remove(); 
+    window.setTimeout(function () {
+        $("#success-alert").fadeTo(500, 0, function () {
+            $("#success-alert").remove();
         });
     }, 2000);
 }

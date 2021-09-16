@@ -1,7 +1,7 @@
 <?php
 
-if(isset($_POST["submit"])) {
-    
+if (isset($_POST["submit"])) {
+
     $userName = $_POST["userName"];
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
@@ -9,35 +9,35 @@ if(isset($_POST["submit"])) {
     $userPassword = $_POST["userPassword"];
     $userConfirmPassword = $_POST["userConfirmPassword"];
     // Generate a new salt
-    $salt = hash("sha256", rand(-69420, 69420), false);
+    $salt = hash("sha256", bin2hex(random_bytes(32)), false);
 
     require_once "conn.inc.php";
     require_once "functions.inc.php";
 
-    if(emptyInputSignup($userName, $firstName, $lastName, $userEmail, $userPassword, $userConfirmPassword) !== false) {
+    if (emptyInputSignup($userName, $firstName, $lastName, $userEmail, $userPassword, $userConfirmPassword) !== false) {
         header("location: ../register?error=emptyinput");
         exit();
     }
-    if(invalidUsername($userName) !== false) {
+    if (invalidUsername($userName) !== false) {
         header("location: ../register?error=invaliduname");
         exit();
     }
-    if(invalidEmail($userEmail) !== false) {
+    if (invalidEmail($userEmail) !== false) {
         header("location: ../register?error=invalidemail");
         exit();
     }
-    if(pdwMatch($userPassword, $userConfirmPassword) !== false) {
+    if (pdwMatch($userPassword, $userConfirmPassword) !== false) {
         header("location: ../register?error=notmatch");
         exit();
     }
-    if(userNameExists($conn, $userName, $userEmail) !== false) {
+    if (userNameExists($conn, $userName, $userEmail) !== false) {
         header("location: ../register?error=usernametaken&uname=$userName");
         exit();
     }
-    
+
     createUser($conn, $userName, $firstName, $lastName, $userEmail, $userPassword, $salt);
 
-}else {
+} else {
     header("location: ../register");
     exit();
 }

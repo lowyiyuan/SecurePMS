@@ -1,6 +1,6 @@
 <?php
 
-echo'<nav class="navbar navbar-expand-lg navbar-light py-3 bg-light">
+echo '<nav class="navbar navbar-expand-lg navbar-light py-3 bg-light">
         <div class="container">
             <a class="navbar-brand" href="index">SecurePMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -19,7 +19,7 @@ echo'<nav class="navbar navbar-expand-lg navbar-light py-3 bg-light">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            '. $_SESSION['username'] .'
+                            ' . $_SESSION['username'] . '
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Edit Profile</a></li>

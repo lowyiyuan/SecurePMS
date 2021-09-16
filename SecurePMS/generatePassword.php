@@ -13,7 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <style>
         * {
             margin: 0;
@@ -26,20 +27,19 @@
     <?php include 'include/navbar.inc.php'; ?>
 
     <div class="container" id="notification">
-
     </div>
-    
+
     <div class="container w-auto mt-5">
         <form action="">
             <div class="input-group mb-3">
                 <input type="text" class="form-control overflow-visible" id="resultEl" readonly>
-                <a class="input-group-text" data-bs-toggle="tooltip" id="copyToClipboard" onclick="copyToClipboard()" data-bs-placement="top"
-                    title="Copy to clipboard"><span><i class="fas fa-copy"></i></span></a>
+                <a class="input-group-text" data-bs-toggle="tooltip" id="copyToClipboard" onclick="copyToClipboard()"
+                    data-bs-placement="top" title="Copy to clipboard"><span><i class="fas fa-copy"></i></span></a>
             </div>
             <div>
-                <label for="passwordLength" class="form-label">Length: &nbsp</label><input type="number" id="length" onkeyup="newPassword(), updateSliderValue()"
-                    min="10" max="128">
-                    <br>
+                <label for="passwordLength" class="form-label">Length: &nbsp</label><input type="number" id="length"
+                    onkeyup="newPassword(), updateSliderValue()" min="10" max="128">
+                <br>
                 <input type="range" class="form-range" min="10" max="128" id="passwordLength" value="14">
             </div>
             <div class="form-check">
@@ -70,6 +70,17 @@
         </form>
     </div>
     <script src="include/generatePassword.inc.js"></script>
+    <script>
+        window.onload = newPassword(), updateSliderValue();
+        generateEl.addEventListener('click', newPassword);
+        flavourArray.forEach(function (flavour) {
+            flavour.addEventListener("click", newPassword)
+        });
+        let sliderArray = [updateSliderValue, newPassword];
+        sliderArray.forEach(function (update) {
+            passwordLength.addEventListener("change", update)
+        })
+    </script>
 
 </body>
 

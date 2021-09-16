@@ -1,4 +1,4 @@
 <?php
 
-echo 'Hello';
-
+$selector = 'a';
+echo $selector;

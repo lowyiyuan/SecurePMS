@@ -6,7 +6,7 @@ function XOR(input, key) {
         } else {
             y = x;
         }
-        c = c + String.fromCharCode(input.charCodeAt(x) ^ key.charCodeAt(y));
+        c += String.fromCharCode(input.charCodeAt(x) ^ key.charCodeAt(y));
     }
-    return c
+    return unescape(encodeURIComponent(c));
 }

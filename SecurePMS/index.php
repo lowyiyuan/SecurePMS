@@ -25,7 +25,6 @@
 
 <body style="margin: 0; overflow:hidden">
     <?php include 'include/navbar.inc.php'; ?>
-    
     <div class="d-flex flex-column justify-content-center" style="min-height: 60vh;">
         <div class="container d-flex justify-content-center d-grid gap-5">
             <div class="text-start">
