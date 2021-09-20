@@ -43,10 +43,6 @@ $.ajax({
     }
 });
 
-function searchItem(searchKey) {
-    displayList.innerHTML = "";
-
-}
 
 function defaultForm() {
     $("#loginDetailsForm").show()
@@ -463,6 +459,7 @@ function updateEditButton(toUpdate) {
     idRef = toUpdate.getAttribute("id");
     editButton = document.getElementById("editButton");
     editButton.removeAttribute("onclick");
+    editButton.removeAttribute("hidden");
     editButton.setAttribute("onclick", "editInformation(" + nameRef + "," + idRef + ")");
     deleteButton = document.getElementById("deleteButton");
     deleteButton.removeAttribute("onclick");
@@ -470,14 +467,15 @@ function updateEditButton(toUpdate) {
 }
 
 function editInformation(element, idRef) {
-    nameRef = element.getAttribute("id");
-    editForm = document.getElementById("editForm");
-    encryptedKey = XOR(key, salt);
-    saveButton = document.getElementById("saveButton");
-    if (nameRef === "loginDetails") {
-        value = resultArr[nameRef][idRef];
-        saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
-        editForm.innerHTML = `<div id="editLoginDetailsForm">
+    if (element != null) {
+        nameRef = element.getAttribute("id");
+        editForm = document.getElementById("editForm");
+        encryptedKey = XOR(key, salt);
+        saveButton = document.getElementById("saveButton");
+        if (nameRef === "loginDetails") {
+            value = resultArr[nameRef][idRef];
+            saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
+            editForm.innerHTML = `<div id="editLoginDetailsForm">
         <div>
             <label for="name" class="form-label">Name</label>
             <div class="input-group mb-3">
@@ -497,10 +495,10 @@ function editInformation(element, idRef) {
             <input type="text" class="form-control" id="editWebsite" value="` + XOR(value.website, key) + `">
         </div>
     </div>`;
-    } else if (nameRef === "paymentCard") {
-        value = resultArr[nameRef][idRef];
-        saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
-        editForm.innerHTML = `<div id="editPaymentCardForm">
+        } else if (nameRef === "paymentCard") {
+            value = resultArr[nameRef][idRef];
+            saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
+            editForm.innerHTML = `<div id="editPaymentCardForm">
         <div>
             <label for="cardName" class="form-label">Card Name</label>
             <div class="input-group mb-3">
@@ -538,10 +536,10 @@ function editInformation(element, idRef) {
             </div>
         </div>
     </div>`;
-    } else if (nameRef === "identityCard") {
-        value = resultArr[nameRef][idRef];
-        saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
-        editForm.innerHTML = `<div id="editIdentityCardForm">
+        } else if (nameRef === "identityCard") {
+            value = resultArr[nameRef][idRef];
+            saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
+            editForm.innerHTML = `<div id="editIdentityCardForm">
         <div>
             <label for="name" class="form-label">Identity Card Name</label>
             <div class="input-group mb-3">
@@ -893,10 +891,10 @@ function editInformation(element, idRef) {
             </div>
         </div>
     </div>`;
-    } else if (nameRef === "licenseKey") {
-        value = resultArr[nameRef][idRef];
-        saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
-        editForm.innerHTML = `<div id="editLicenseKeyForm">
+        } else if (nameRef === "licenseKey") {
+            value = resultArr[nameRef][idRef];
+            saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
+            editForm.innerHTML = `<div id="editLicenseKeyForm">
         <div>
             <label for="name" class="form-label">Product Name</label>
             <div class="input-group mb-3">
@@ -922,10 +920,10 @@ function editInformation(element, idRef) {
             </div>
         </div>
     </div>`;
-    } else if (nameRef === "secureNotes") {
-        value = resultArr[nameRef][idRef];
-        saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
-        editForm.innerHTML = `<div id="editSecureNotesForm">
+        } else if (nameRef === "secureNotes") {
+            value = resultArr[nameRef][idRef];
+            saveButton.setAttribute("onclick", "saveInformation(" + nameRef + "," + idRef + ")");
+            editForm.innerHTML = `<div id="editSecureNotesForm">
         <div>
             <label for="name" class="form-label">Note Name</label>
             <div class="input-group mb-3">
@@ -939,6 +937,7 @@ function editInformation(element, idRef) {
             </div>
         </div>
     </div>`;
+        }
     }
 }
 

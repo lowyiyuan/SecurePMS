@@ -50,16 +50,23 @@ if (empty($selector) || empty($validator)) {
     echo "We could not validate your request!";
 } else if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false) {
     ?>
+        <form action="includes/resetPassword.inc" method="POST">
+            <div class="mb-3">
+                <input type="hidden" class="form-control" name="selector" value="<?php echo $selector; ?>">
+            </div>
+            <div class="mb-3">
+                <input type="hidden" class="form-control" name="validator" value="<?php echo $validator; ?>">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="pwd" id="" placeholder="Enter a new password...">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="pwdRepeat" id="" placeholder="Re-enter password...">
+            </div>
+            <button type="submit" class="form-control" name="resetPasswordSubmit">Reset Password</button>
+        </form>
 
-                    <form action="includes/resetPassword.inc" method="POST">
-                        <input type="hidden" name="selector" value="<?php echo $selector; ?>">
-                        <input type="hidden" name="validator" value="<?php echo $validator; ?>">
-                        <input type="password" name="pwd" id="" placeholder="Enter a new password...">
-                        <input type="password" name="pwdRepeat" id="" placeholder="Re-enter password...">
-                        <button type="submit" name="resetPasswordSubmit">Reset Password</button>
-                    </form>
-
-                    <?php
+        <?php
 }
 ?>
     </div>

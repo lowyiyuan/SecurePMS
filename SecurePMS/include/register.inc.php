@@ -9,7 +9,7 @@ if (isset($_POST["submit"])) {
     $userPassword = $_POST["userPassword"];
     $userConfirmPassword = $_POST["userConfirmPassword"];
     // Generate a new salt
-    $salt = hash("sha256", bin2hex(random_bytes(32)), false);
+    $salt = bin2hex(random_bytes(32));
 
     require_once "conn.inc.php";
     require_once "functions.inc.php";

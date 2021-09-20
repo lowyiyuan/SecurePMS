@@ -41,6 +41,15 @@
         </div>
     </nav>
     <div class="container mt-5">
+        <?php
+if (isset($_GET["reset"])) {
+    if ($_GET["reset"] == "success") {
+        echo '<div class="alert alert-success" role="alert">If your account exists, you will receive an email from us!</div>';
+    } else if ($_GET["reset"] == "noexist") {
+        echo '<div class="alert alert-danger" role="alert">User account does not exist!</div>';
+    }
+}
+?>
         <h1>Reset Password</h1>
         <p>An email will be sent to you with instructions on how to reset your password.</p>
         <form action="include/requestReset.inc" method="POST">
@@ -48,13 +57,6 @@
             <button type="submit" class="btn btn-secondary" name="resetRequestSubmit">Reset Password</button>
         </form>
 
-        <?php
-if (isset($_GET["reset"])) {
-    if ($_GET["reset"] == "success") {
-        echo '<p class="text-success">If your account exists, you will receive an email from us!</p>';
-    }
-}
-?>
 
     </div>
 

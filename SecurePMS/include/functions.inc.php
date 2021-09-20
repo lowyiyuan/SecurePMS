@@ -111,7 +111,7 @@ function createUser($conn, $userName, $firstName, $lastName, $userEmail, $userPa
     }
 
     // Returns user to sign up page with no errors if successful
-    header("location: ../register?error=none");
+    header("location: ../login");
 
     exit();
 }
@@ -152,16 +152,18 @@ function loginUser($conn, $userName, $userPassword)
         session_start();
         $_SESSION["userid"] = $uidExists["user_ID"];
         $_SESSION["username"] = $uidExists["user_Name"];
+        $_SESSION["userfname"] = $uidExists["user_Fname"];
+        $_SESSION["userlname"] = $uidExists["user_Lname"];
         $_SESSION["useremail"] = $uidExists["user_Email"];
         $_SESSION["userpassword"] = $uidExists["user_Password"];
         $_SESSION["hash"] = $uidExists["user_Salt"];
-        $_SESSION["filename"] = $uidExists["user_FileName"];
         setcookie('userid', $uidExists['user_ID'], time() + (60 * 60), "/", false, true);
         setcookie('username', $uidExists['user_Name'], time() + (60 * 60), "/", false, true);
+        setcookie('firstname', $uidExists['user_Fname'], time() + (60 * 60), "/", false, true);
+        setcookie('lastname', $uidExists['user_Lname'], time() + (60 * 60), "/", false, true);
         setcookie('useremail', $uidExists['user_Email'], time() + (60 * 60), "/", false, true);
         setcookie('userpassword', $uidExists['user_Password'], time() + (60 * 60), "/", false, true);
         setcookie('hash', $uidExists['user_Salt'], time() + (60 * 60), "/", false, true);
-        setcookie('filename', $uidExists['user_FileName'], time() + (60 * 60), "/", false, true);
         header("location: ../index");
         exit();
     }

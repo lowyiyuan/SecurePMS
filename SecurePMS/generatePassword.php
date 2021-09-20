@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,50 +24,55 @@
 </head>
 
 <body style="margin: 0; overflow:hidden">
-    <?php include 'include/navbar.inc.php'; ?>
+    <?php include 'include/navbar.inc.php';?>
 
     <div class="container" id="notification">
     </div>
 
-    <div class="container w-auto mt-5">
-        <form action="">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control overflow-visible" id="resultEl" readonly>
-                <a class="input-group-text" data-bs-toggle="tooltip" id="copyToClipboard" onclick="copyToClipboard()"
-                    data-bs-placement="top" title="Copy to clipboard"><span><i class="fas fa-copy"></i></span></a>
+    <div class="container mt-5 h-100">
+        <div class="d-flex justify-content-center h-100 ">
+            <div style="width: 600px; height: 800px;">
+                <form action="">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control overflow-visible" id="resultEl" readonly>
+                        <a class="input-group-text" data-bs-toggle="tooltip" id="copyToClipboard"
+                            onclick="copyToClipboard()" data-bs-placement="top" title="Copy to clipboard"><span><i
+                                    class="fas fa-copy"></i></span></a>
+                    </div>
+                    <div>
+                        <label for="passwordLength" class="form-label">Length: &nbsp</label><input type="number"
+                            id="length" onkeyup="newPassword(), updateSliderValue()" min="10" max="128">
+                        <br>
+                        <input type="range" class="form-range" min="10" max="128" id="passwordLength" value="14">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked value="" id="lowerCase">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            include lowercase
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked value="" id="upperCase">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            include uppercase
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked value="" id="numberEl">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            include numbers
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked value="" id="symbolsEl">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            include symbols (!@#$%^&*) only
+                        </label>
+                    </div>
+                    <a class="btn btn-secondary my-3" id="generateEl">Generate Password</a>
+                </form>
             </div>
-            <div>
-                <label for="passwordLength" class="form-label">Length: &nbsp</label><input type="number" id="length"
-                    onkeyup="newPassword(), updateSliderValue()" min="10" max="128">
-                <br>
-                <input type="range" class="form-range" min="10" max="128" id="passwordLength" value="14">
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" checked value="" id="lowerCase">
-                <label class="form-check-label" for="flexCheckDefault">
-                    include lowercase
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" checked value="" id="upperCase">
-                <label class="form-check-label" for="flexCheckDefault">
-                    include uppercase
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" checked value="" id="numberEl">
-                <label class="form-check-label" for="flexCheckDefault">
-                    include numbers
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" checked value="" id="symbolsEl">
-                <label class="form-check-label" for="flexCheckDefault">
-                    include symbols (!@#$%^&*) only
-                </label>
-            </div>
-            <a class="btn btn-secondary my-3" id="generateEl">Generate Password</a>
-        </form>
+        </div>
     </div>
     <script src="include/generatePassword.inc.js"></script>
     <script>

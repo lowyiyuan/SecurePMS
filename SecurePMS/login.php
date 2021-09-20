@@ -24,26 +24,30 @@
 if (isset($_GET['error'])) {
     if ($_GET['error'] == "emptyinput") {
         echo '<div class="alert alert-danger" role="alert">
-                            Please fill in all fields!
-                        </div>';
+                                        Please fill in all fields!
+                                    </div>';
     } else if ($_GET['error'] == "wronglogin") {
         echo '<div class="alert alert-danger" role="alert">
-                            Incorrect Username or Password.
-                        </div>';
+                                        Incorrect Username or Password.
+                                    </div>';
     } else if ($_GET['error'] == "logout") {
         echo '<div class="alert alert-success" role="alert">
-                            Logout Successfully!
-                        </div>';
+                                        Logout Successfully!
+                                    </div>';
     } else if ($_GET['error'] == "nosession") {
         echo '<div class="alert alert-success" role="alert">
-                             Please login before continuing.
-                        </div>';
+                                        Please login before continuing.
+                                    </div>';
+    } else if ($_GET['error'] == "relog") {
+        echo '<div class="alert alert-success" role="alert">
+                                        Please relogin for changes to take effect!
+                                    </div>';
     }
 } else if (isset($_GET['reset'])) {
     if ($_GET['reset'] == "success") {
         echo '<div class="alert alert-success" role="alert">
-                             Password Reset Successfully!
-                        </div>';
+                                        Password Reset Successfully!
+                                    </div>';
     }
 }
 

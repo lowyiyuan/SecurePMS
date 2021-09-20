@@ -225,7 +225,7 @@ if (!isset($_POST["submit"])) {
             break;
     }
 } else {
-    header("location: ../viewPassword");
+    header("location: ../index");
     exit();
 }
 ;
